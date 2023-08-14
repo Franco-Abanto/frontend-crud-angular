@@ -20,8 +20,8 @@ export class LoginComponent {
       (response) => {
         if (response.auth) {
           console.log('Autenticación exitosa');
-          this.router.navigate(['/home']);
-          console.log(response);
+          this.authService.setToken(response.token);
+          this.router.navigate(['/main']);
         } else {
           console.log('Credenciales inválidas');
         }

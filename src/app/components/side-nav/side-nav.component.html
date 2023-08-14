@@ -1,0 +1,19 @@
+<div class="side-nav">
+  <a
+    *ngFor="let item of navItems"
+    [routerLink]="item.link"
+    routerLinkActive="active"
+    class="side-nav-item"
+  >
+    {{ item.name }}
+  </a>
+  <a
+    class="side-nav-item"
+    href="https://github.com/Franco-Abanto"
+    target="_blank"
+    >Acerca de</a
+  >
+  <div class="logout-secc">
+    <button mat-button class="logout-button" (click)="logout()">Salir</button>
+  </div>
+</div>

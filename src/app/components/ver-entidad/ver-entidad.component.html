@@ -1,5 +1,5 @@
 <div class="form-container">
-  <h2>Crear Entidad</h2>
+  <h2>Ver Entidad</h2>
   <form [formGroup]="entidadForm" (ngSubmit)="onSubmit()" class="form">
     <div class="input-group">
       <mat-form-field class="form-field">
@@ -31,6 +31,7 @@
           matInput
           placeholder="Razon Social"
           formControlName="razon_social"
+          onkeyup="this.value = this.value.toUpperCase();"
         />
       </mat-form-field>
       <mat-form-field class="form-field">
@@ -71,7 +72,7 @@
 
     <div class="actions">
       <button mat-button type="button" (click)="onCancel()">Cancelar</button>
-      <button mat-raised-button color="primary" type="submit">Registrar</button>
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
     </div>
   </form>
 </div>

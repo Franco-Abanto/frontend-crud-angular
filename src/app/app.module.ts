@@ -24,6 +24,7 @@ import { CrearEntidadComponent } from './components/crear-entidad/crear-entidad.
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { VerEntidadComponent } from './components/ver-entidad/ver-entidad.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
     MainComponent,
     SideNavComponent,
     CrearEntidadComponent,
+    VerEntidadComponent,
   ],
   imports: [
     BrowserModule,

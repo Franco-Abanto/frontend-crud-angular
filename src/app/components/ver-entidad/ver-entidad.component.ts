@@ -1,26 +1,28 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CrudService } from 'src/app/services/crud.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-crear-entidad',
-  templateUrl: './crear-entidad.component.html',
-  styleUrls: ['./crear-entidad.component.css'],
+  selector: 'app-ver-entidad',
+  templateUrl: './ver-entidad.component.html',
+  styleUrls: ['./ver-entidad.component.css'],
 })
-export class CrearEntidadComponent {
+export class VerEntidadComponent {
   entidadForm: FormGroup;
   lista_tipo_contribuyente: any[] = [];
   lista_tipo_documento: any[] = [];
+  dataInicial: any;
 
   constructor(
-    public dialogRef: MatDialogRef<CrearEntidadComponent>,
+    public dialogRef: MatDialogRef<VerEntidadComponent>,
     private formBuilder: FormBuilder,
-    private crudService: CrudService
+    private crudService: CrudService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.entidadForm = this.formBuilder.group({
-      id_entidad: Math.floor(Math.random() * (50 - 10 + 1)) + 10,
+      id_entidad: '',
       id_tipo_documento: '',
       nro_documento: '',
       razon_social: '',
@@ -29,6 +31,11 @@ export class CrearEntidadComponent {
       direccion: '',
       telefono: '',
     });
+
+    if (data && data.entidad) {
+      this.entidadForm.patchValue(data.entidad);
+      this.dataInicial = JSON.stringify(this.entidadForm.value);
+    }
   }
 
   ngOnInit(): void {
@@ -52,25 +59,29 @@ export class CrearEntidadComponent {
   }
 
   onSubmit(): void {
-    if (this.entidadForm.valid) {
+    const dataFinal = JSON.stringify(this.entidadForm.value);
+    if (this.dataInicial === dataFinal) {
+      console.log('No hubo cambios.');
+      this.dialogRef.close();
+    } else {
+      console.log('Hubo cambios.');
       Swal.fire({
         title: '¿Estás seguro?',
-        text: 'Se creará la entidad con los datos proporcionados.',
+        text: 'Se realizará la actualización de la entidad.',
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Crear',
+        confirmButtonText: 'Actualizar',
         cancelButtonText: 'Cancelar',
       }).then((result) => {
         if (result.isConfirmed) {
-          const formData = this.entidadForm.value;
-          this.crudService.crearEntidad(formData).subscribe(
+          this.crudService.actualizarEntidad(dataFinal).subscribe(
             (response) => {
-              console.log('Entidad creada correctamente', response);
+              console.log('Entidad actualizada correctamente', response);
               this.dialogRef.close();
               window.location.reload();
             },
             (error) => {
-              console.error('Error al crear la entidad:', error);
+              console.error('Error al actualizar la entidad:', error);
             }
           );
         }

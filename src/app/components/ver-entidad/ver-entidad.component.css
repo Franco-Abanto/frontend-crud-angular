@@ -1,0 +1,51 @@
+/* Estilos para el contenedor del formulario */
+.form-container {
+  padding: 10px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Estilos para el formulario */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para el grupo de campos */
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+
+/* Estilos para los campos de entrada */
+.form-field {
+  flex: 1;
+  margin: 10px;
+}
+
+/* Estilos para los botones */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+mat-label {
+  font-size: 14px !important;
+}
+
+.mat-mdc-option {
+  font-size: 14px !important;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px !important;
+}
+
+.mat-mdc-select {
+  font-size: 14px !important;
+}

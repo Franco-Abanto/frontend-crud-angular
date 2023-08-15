@@ -29,6 +29,26 @@ export class CrudService {
     return this.http.post(`${this.apiUrl}crearEntidad`, data, { headers });
   }
 
+  verEntidad(id_entidad: number): Observable<any> {
+    const headers = this.getAuthorizationHeader();
+    return this.http.get(`${this.apiUrl}verEntidad`, {
+      params: { id_entidad },
+      headers,
+    });
+  }
+
+  actualizarEntidad(data: any): Observable<any> {
+    const headers = this.getAuthorizationHeader();
+    return this.http.post(`${this.apiUrl}actualizarEntidad`, data, { headers });
+  }
+
+  eliminarEntidad(id_entidad: number): Observable<any> {
+    const headers = this.getAuthorizationHeader();
+    return this.http.delete(`${this.apiUrl}eliminarEntidad/${id_entidad}`, {
+      headers,
+    });
+  }
+
   //Listar para los select del formulario
 
   listarTipoContribuyente(): Observable<any> {

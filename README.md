@@ -1,27 +1,82 @@
-# AngularCrudEntidades
+# Frontend CRUD con Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+Este proyecto es una aplicación frontend desarrollada con Angular que interactúa con una API backend para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar). La aplicación se comunica con un servidor Express que utiliza JWT para la autenticación y una base de datos MySQL para el almacenamiento de datos.
 
-## Development server
+## Características
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Angular**: Framework de desarrollo de aplicaciones web de una sola página.
+- **Interacción con API RESTful**: Comunicación con un backend desarrollado en Express.js.
+- **Autenticación JWT**: Manejo de autenticación segura mediante JSON Web Tokens.
+- **Operaciones CRUD**: Crear, Leer, Actualizar y Eliminar registros desde la interfaz de usuario.
 
-## Code scaffolding
+## Requisitos previos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Antes de comenzar, asegúrate de tener instalados los siguientes componentes:
 
-## Build
+- [Node.js](https://nodejs.org/) (versión 14 o superior)
+- [Angular CLI](https://angular.io/cli) (versión 16.2.0 o superior)
+- [Backend del proyecto](https://github.com/Franco-Abanto/backend-crud-express) en funcionamiento
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalación
 
-## Running unit tests
+1. **Clona este repositorio:**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+   git clone https://github.com/Franco-Abanto/frontend-crud-angular.git
+   ```
 
-## Running end-to-end tests
+2. **Navega al directorio del proyecto:**
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```bash
+   cd frontend-crud-angular
+   ```
 
-## Further help
+3. **Instala las dependencias:**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   ```bash
+   npm install
+   ```
+
+4. **Configura el entorno:**
+
+   - Crea un archivo `.env` en la raíz del proyecto.
+   - Añade la URL de la API backend en el archivo `.env`, por ejemplo:
+
+     ```
+     API_URL=http://localhost:3000/api
+     ```
+
+5. **Inicia el servidor de desarrollo:**
+
+   ```bash
+   ng serve
+   ```
+
+   La aplicación estará disponible en `http://localhost:4200`.
+
+## Scripts disponibles
+
+- `ng serve`: Inicia el servidor de desarrollo.
+- `ng build`: Compila la aplicación para producción en la carpeta `dist/`.
+- `ng test`: Ejecuta las pruebas unitarias utilizando Karma.
+- `ng e2e`: Ejecuta las pruebas end-to-end.
+
+## Estructura del proyecto
+
+- `src/app`: Contiene los componentes, servicios y módulos de la aplicación.
+- `src/assets`: Recursos estáticos como imágenes y estilos globales.
+- `src/environments`: Archivos de configuración para diferentes entornos (desarrollo, producción).
+
+## Contribuciones
+
+Si deseas contribuir a este proyecto:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama con tu función o corrección: `git checkout -b mi-nueva-funcionalidad`.
+3. Realiza tus cambios y haz commit: `git commit -m 'Agregar nueva funcionalidad'`.
+4. Envía tus cambios al repositorio remoto: `git push origin mi-nueva-funcionalidad`.
+5. Abre una solicitud de pull en GitHub.
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
